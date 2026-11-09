@@ -17,6 +17,8 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         hero: "bg-ember text-primary-foreground font-semibold rounded-full shadow-ember hover:brightness-110 hover:-translate-y-0.5 transition-all",
+        whatsapp:
+          "rounded-full bg-whatsapp text-whatsapp-foreground font-semibold shadow-lg hover:brightness-110 hover:-translate-y-0.5 transition-all",
         glass:
           "rounded-full border border-foreground/15 bg-foreground/5 text-foreground backdrop-blur-md hover:bg-foreground/10 hover:border-primary/60",
       },
