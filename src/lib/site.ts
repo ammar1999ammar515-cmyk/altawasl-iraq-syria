@@ -7,6 +7,13 @@ export const DESTINATIONS = ["قامشلي - حسكة", "الرقة", "حلب", 
 
 export const CATALOG_SIZE = 68;
 
+/** WhatsApp number in international format, digits only (no +). PLACEHOLDER until the user sends the real one. */
+export const WHATSAPP_NUMBER = "9647500000000";
+export const WHATSAPP_DISPLAY = "+964 750 000 0000";
+
+export const whatsappLink = (message = "مرحباً، أود الاستفسار عن أسعار الشحن من العراق إلى سوريا.") =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
 /** Sample prices from the app (Erbil → Qamishli-Hasakah, USD per 1000 kg). */
 export const SAMPLE_PRICES = [
   { name: "كافة أنواع الألبسة", price: 4600 },
