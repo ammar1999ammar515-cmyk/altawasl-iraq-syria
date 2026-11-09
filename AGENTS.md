@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Company facts (app URL, routes, prices, WhatsApp number) live in `src/lib/site.ts`; pages import from there so one edit updates the whole site.
+- Site is Arabic RTL (`dir="rtl"` on `<html>`); use logical properties (`ps/pe`, `inset-inline-*`) so layout stays correct.
