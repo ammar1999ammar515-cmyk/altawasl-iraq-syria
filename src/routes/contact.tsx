@@ -1,10 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpLeft, Clock, MapPin, MessageSquareText } from "lucide-react";
+import { ArrowUpLeft, MapPin, MessageSquareText } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp";
-import { DESTINATIONS, ORIGINS, WHATSAPP_DISPLAY, whatsappLink } from "@/lib/site";
+import {
+  CONTACTS,
+  DESTINATIONS,
+  ORIGINS,
+  WHATSAPP_NUMBER,
+  formatPhone,
+  originNumber,
+  whatsappLink,
+} from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -62,7 +70,11 @@ function ContactPage() {
           className="bento-tile animate-rise space-y-5 p-7 lg:col-span-3"
           onSubmit={(e) => {
             e.preventDefault();
-            window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
+            window.open(
+              whatsappLink(message, originNumber(origin)),
+              "_blank",
+              "noopener,noreferrer",
+            );
           }}
         >
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -128,45 +140,74 @@ function ContactPage() {
           </Button>
         </form>
 
-        {/* Direct contact */}
-        <div className="flex flex-col gap-4 lg:col-span-2">
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noreferrer"
-            className="bento-tile animate-rise p-7 [animation-delay:100ms]"
-          >
-            <div className="grid size-14 place-items-center rounded-2xl bg-whatsapp text-whatsapp-foreground">
-              <WhatsAppIcon className="size-8" />
-            </div>
-            <p className="mt-6 text-sm text-muted-foreground">واتساب مباشر</p>
-            <p className="mt-1 font-display text-2xl font-bold" dir="ltr">
-              {WHATSAPP_DISPLAY}
+        {/* Head office */}
+        <a
+          href={whatsappLink()}
+          target="_blank"
+          rel="noreferrer"
+          className="bento-tile group animate-rise flex flex-col justify-between p-7 lg:col-span-2 [animation-delay:100ms]"
+        >
+          <div className="grid size-14 place-items-center rounded-2xl bg-whatsapp text-whatsapp-foreground">
+            <WhatsAppIcon className="size-8" />
+          </div>
+          <div className="mt-8">
+            <p className="text-sm text-muted-foreground">الإدارة العامة - أربيل</p>
+            <p className="mt-1 font-display text-3xl font-bold" dir="ltr">
+              {formatPhone(WHATSAPP_NUMBER)}
             </p>
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-whatsapp">
               ابدأ المحادثة الآن
-              <ArrowUpLeft className="size-4" />
+              <ArrowUpLeft className="size-4 transition-transform group-hover:-translate-y-0.5" />
             </span>
-          </a>
-
-          <div className="bento-tile animate-rise space-y-4 p-7 [animation-delay:160ms]">
-            <div className="flex items-start gap-3">
-              <MapPin className="mt-0.5 size-5 text-primary" />
-              <div>
-                <p className="font-semibold">نقاط الانطلاق</p>
-                <p className="text-sm text-muted-foreground">{ORIGINS.join(" · ")} – العراق</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <Clock className="mt-0.5 size-5 text-primary" />
-              <div>
-                <p className="font-semibold">الرد على الاستفسارات</p>
-                <p className="text-sm text-muted-foreground">طوال أيام الأسبوع عبر واتساب</p>
-              </div>
-            </div>
           </div>
-        </div>
+        </a>
       </div>
+
+      {/* All offices */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-bold md:text-3xl">مكاتبنا وأرقام الواتساب</h2>
+        <p className="mt-2 text-muted-foreground">اضغط على أي رقم لفتح محادثة واتساب مباشرة.</p>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {CONTACTS.map((c) => (
+            <div key={c.country} className="bento-tile p-6">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl" aria-hidden="true">
+                  {c.flag}
+                </span>
+                <h3 className="text-xl font-bold">{c.country}</h3>
+              </div>
+              <div className="mt-6 space-y-6">
+                {c.offices.map((o) => (
+                  <div key={o.city}>
+                    <p className="flex items-center gap-2 text-sm font-semibold">
+                      <MapPin className="size-4 text-primary" />
+                      {o.city}
+                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {o.numbers.map((n) => (
+                        <li key={n}>
+                          <a
+                            href={whatsappLink(undefined, n)}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`واتساب ${o.city} ${formatPhone(n)}`}
+                            className="flex items-center justify-between gap-3 rounded-xl border border-border bg-background/40 px-4 py-2.5 transition-colors hover:border-whatsapp/60 hover:bg-whatsapp/10"
+                          >
+                            <span className="font-display text-sm font-semibold" dir="ltr">
+                              {formatPhone(n)}
+                            </span>
+                            <WhatsAppIcon className="size-4 text-whatsapp" />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
