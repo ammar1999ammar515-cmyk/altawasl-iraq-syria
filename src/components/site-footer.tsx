@@ -1,7 +1,15 @@
 import { Link } from "@tanstack/react-router";
 
 import logo from "@/assets/logo.jpg";
-import { COMPANY_NAME, DESTINATIONS, ORIGINS, whatsappLink } from "@/lib/site";
+import {
+  COMPANY_NAME,
+  CONTACTS,
+  DESTINATIONS,
+  ORIGINS,
+  WHATSAPP_NUMBER,
+  formatPhone,
+  whatsappLink,
+} from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -29,6 +37,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>من: {ORIGINS.join(" · ")}</li>
             <li>إلى: {DESTINATIONS.join(" · ")}</li>
+            <li>مكاتبنا: {CONTACTS.map((c) => c.country).join(" · ")}</li>
           </ul>
         </div>
 
@@ -46,8 +55,13 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <a href={whatsappLink()} target="_blank" rel="noreferrer" className="hover:text-primary">
-                واتساب
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-primary"
+              >
+                واتساب الإدارة: <span dir="ltr">{formatPhone(WHATSAPP_NUMBER)}</span>
               </a>
             </li>
           </ul>
