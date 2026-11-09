@@ -190,10 +190,31 @@ function Index() {
           </div>
         </div>
 
+        {/* WhatsApp tile */}
+        <a
+          href={whatsappLink()}
+          target="_blank"
+          rel="noreferrer"
+          className="bento-tile group animate-rise flex flex-col justify-between p-6 md:row-span-2 [animation-delay:380ms]"
+        >
+          <div className="grid size-14 place-items-center rounded-2xl bg-whatsapp text-whatsapp-foreground">
+            <WhatsAppIcon className="size-8" />
+          </div>
+          <div>
+            <h3 className="mt-5 text-xl font-semibold">رد سريع على واتساب</h3>
+            <p className="mt-2 text-sm leading-7 text-muted-foreground">
+              اسألنا عن أي صنف أو احجز شحنتك مباشرة.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-whatsapp">
+              ابدأ المحادثة
+              <ArrowUpLeft className="size-4 transition-transform group-hover:-translate-y-0.5" />
+            </span>
+          </div>
+        </a>
         {/* Prices preview */}
         <Link
           to="/prices"
-          className="bento-tile group animate-rise p-6 md:col-span-2 [animation-delay:380ms]"
+          className="bento-tile group animate-rise p-6 md:col-span-2 [animation-delay:440ms]"
         >
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">نماذج من الأسعار</h3>
@@ -214,22 +235,6 @@ function Index() {
             ))}
           </ul>
         </Link>
-
-        {/* WhatsApp tile */}
-        <a
-          href={whatsappLink()}
-          target="_blank"
-          rel="noreferrer"
-          className="bento-tile group animate-rise p-6 [animation-delay:440ms]"
-        >
-          <div className="grid size-12 place-items-center rounded-2xl bg-whatsapp text-whatsapp-foreground">
-            <WhatsAppIcon className="size-7" />
-          </div>
-          <h3 className="mt-5 text-xl font-semibold">رد سريع على واتساب</h3>
-          <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            اسألنا عن أي صنف أو احجز شحنتك مباشرة.
-          </p>
-        </a>
       </section>
 
       {/* How it works */}
@@ -243,9 +248,7 @@ function Index() {
             <div key={s.title} className="bento-tile p-7">
               <div className="flex items-center justify-between">
                 <s.icon className="size-7 text-primary" />
-                <span className="font-display text-5xl font-bold text-foreground/10">
-                  0{i + 1}
-                </span>
+                <span className="font-display text-5xl font-bold text-foreground/10">0{i + 1}</span>
               </div>
               <h3 className="mt-6 text-xl font-semibold">{s.title}</h3>
               <p className="mt-2 text-sm leading-7 text-muted-foreground">{s.text}</p>
