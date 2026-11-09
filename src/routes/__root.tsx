@@ -84,13 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "التواصل الذهبي للشحن السريع" },
       {
         name: "description",
-        content: "شحن بري سريع من أربيل وبغداد إلى سوريا بأسعار واضحة لكل صنف.",
+        content: "شحن بري سريع وموثوق من أربيل وبغداد إلى سوريا. عرض السعر عبر واتساب.",
       },
       { name: "author", content: "شركة التواصل الذهبي للشحن السريع" },
       { property: "og:title", content: "التواصل الذهبي للشحن السريع" },
       {
         property: "og:description",
-        content: "شحن بري سريع من أربيل وبغداد إلى سوريا بأسعار واضحة لكل صنف.",
+        content: "شحن بري سريع وموثوق من أربيل وبغداد إلى سوريا. عرض السعر عبر واتساب.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

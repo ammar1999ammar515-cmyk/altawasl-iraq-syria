@@ -32,7 +32,7 @@ function RoutesPage() {
         <span className="text-sm font-medium text-primary">المسارات</span>
         <h1 className="mt-3 text-4xl font-bold md:text-5xl">من العراق إلى سوريا</h1>
         <p className="mt-4 text-lg leading-8 text-muted-foreground">
-          نقطتا انطلاق في العراق، وأربع وجهات في سوريا. لكل مسار سعره الخاص لكل صنف.
+          نقطتا انطلاق في العراق، وأربع وجهات في سوريا. اضغط على أي مسار لطلب عرض سعر عبر واتساب.
         </p>
       </header>
 
@@ -65,7 +65,7 @@ function RoutesPage() {
                   </div>
                   <span className="text-sm font-semibold">{dest}</span>
                   <a
-                    href={whatsappLink(`مرحباً، أريد الاستفسار عن الشحن من ${origin} إلى ${dest}.`)}
+                    href={whatsappLink(`مرحباً، أريد عرض سعر للشحن من ${origin} إلى ${dest}.`)}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`استفسر عن مسار ${origin} إلى ${dest} عبر واتساب`}

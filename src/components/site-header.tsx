@@ -1,15 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpLeft, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 import logo from "@/assets/logo.jpg";
 import { Button } from "@/components/ui/button";
-import { APP_URL, COMPANY_SHORT } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/whatsapp";
+import { COMPANY_SHORT, whatsappLink } from "@/lib/site";
 
 const NAV = [
   { to: "/", label: "الرئيسية" },
   { to: "/routes", label: "المسارات" },
-  { to: "/prices", label: "الأسعار" },
   { to: "/contact", label: "تواصل معنا" },
 ] as const;
 
@@ -47,10 +47,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild variant="hero" size="default" className="hidden sm:inline-flex">
-            <a href={APP_URL} target="_blank" rel="noreferrer">
-              افتح دليل الأسعار
-              <ArrowUpLeft />
+          <Button asChild variant="whatsapp" size="default" className="hidden sm:inline-flex">
+            <a href={whatsappLink()} target="_blank" rel="noreferrer">
+              <WhatsAppIcon className="size-4" />
+              اطلب عرض سعر
             </a>
           </Button>
           <Button
@@ -79,10 +79,10 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Button asChild variant="hero" size="xl" className="mt-2">
-              <a href={APP_URL} target="_blank" rel="noreferrer">
-                افتح دليل الأسعار
-                <ArrowUpLeft />
+            <Button asChild variant="whatsapp" size="xl" className="mt-2">
+              <a href={whatsappLink()} target="_blank" rel="noreferrer">
+                <WhatsAppIcon className="size-5" />
+                اطلب عرض سعر عبر واتساب
               </a>
             </Button>
           </div>

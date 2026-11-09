@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import logo from "@/assets/logo.jpg";
-import { APP_URL, COMPANY_NAME, DESTINATIONS, ORIGINS } from "@/lib/site";
+import { COMPANY_NAME, DESTINATIONS, ORIGINS, whatsappLink } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -20,7 +20,7 @@ export function SiteFooter() {
             <span className="font-display text-xl font-bold">{COMPANY_NAME}</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-muted-foreground">
-            شحن بري سريع وموثوق من العراق إلى سوريا، بأسعار واضحة بالدولار لكل صنف ولكل مسار.
+            شحن بري سريع وموثوق من العراق إلى سوريا. للأسعار والحجز تواصل معنا عبر واتساب.
           </p>
         </div>
 
@@ -41,18 +41,13 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/prices" className="hover:text-primary">
-                الأسعار
-              </Link>
-            </li>
-            <li>
               <Link to="/contact" className="hover:text-primary">
                 تواصل معنا
               </Link>
             </li>
             <li>
-              <a href={APP_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
-                دليل الأسعار (التطبيق)
+              <a href={whatsappLink()} target="_blank" rel="noreferrer" className="hover:text-primary">
+                واتساب
               </a>
             </li>
           </ul>

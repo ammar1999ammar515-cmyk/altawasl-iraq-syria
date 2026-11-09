@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp";
-import { APP_URL, DESTINATIONS, ORIGINS, WHATSAPP_DISPLAY, whatsappLink } from "@/lib/site";
+import { DESTINATIONS, ORIGINS, WHATSAPP_DISPLAY, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -12,12 +12,12 @@ export const Route = createFileRoute("/contact")({
       { title: "تواصل معنا عبر واتساب | التواصل الذهبي للشحن السريع" },
       {
         name: "description",
-        content: "راسلنا مباشرة على واتساب لحجز شحنتك أو الاستفسار عن الأسعار والمسارات.",
+        content: "راسلنا مباشرة على واتساب لحجز شحنتك والحصول على عرض سعر.",
       },
       { property: "og:title", content: "تواصل مع التواصل الذهبي للشحن السريع" },
       {
         property: "og:description",
-        content: "رد سريع على واتساب لحجز الشحنات والاستفسار عن الأسعار.",
+        content: "رد سريع على واتساب لحجز الشحنات وعروض الأسعار.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,7 +37,7 @@ function ContactPage() {
   const [weight, setWeight] = useState("");
 
   const message = [
-    "مرحباً، أريد حجز/الاستفسار عن شحنة:",
+    "مرحباً، أريد عرض سعر لشحنة:",
     name && `الاسم: ${name}`,
     `المسار: ${origin} ← ${dest}`,
     goods && `نوع البضاعة: ${goods}`,
@@ -67,7 +67,7 @@ function ContactPage() {
         >
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MessageSquareText className="size-5 text-primary" />
-            طلب شحنة سريع
+            طلب عرض سعر
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -124,7 +124,7 @@ function ContactPage() {
 
           <Button type="submit" variant="whatsapp" size="xl" className="w-full">
             <WhatsAppIcon className="size-5" />
-            أرسل الطلب على واتساب
+            اطلب عرض السعر على واتساب
           </Button>
         </form>
 
@@ -164,15 +164,6 @@ function ContactPage() {
                 <p className="text-sm text-muted-foreground">طوال أيام الأسبوع عبر واتساب</p>
               </div>
             </div>
-            <a
-              href={APP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-            >
-              تصفّح دليل الأسعار
-              <ArrowUpLeft className="size-4" />
-            </a>
           </div>
         </div>
       </div>
