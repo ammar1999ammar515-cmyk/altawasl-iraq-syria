@@ -31,5 +31,5 @@ use the editor.
 
 ## Project rules
 
-- Company facts (app URL, routes, prices, WhatsApp number) live in `src/lib/site.ts`; pages import from there so one edit updates the whole site.
+- Company facts (routes, WhatsApp number) live in `src/lib/site.ts`; pages import from there so one edit updates the whole site.
 - Site is Arabic RTL (`dir="rtl"` on `<html>`); use logical properties (`ps/pe`, `inset-inline-*`) so layout stays correct.

@@ -2,12 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
   ArrowUpLeft,
-  Calculator,
-  DollarSign,
   MapPin,
-  PackageSearch,
+  MessageSquareText,
+  PackageCheck,
   Route as RouteIcon,
-  Search,
+  ShieldCheck,
   Truck,
 } from "lucide-react";
 
@@ -15,15 +14,7 @@ import heroTruck from "@/assets/hero-truck.jpg";
 import warehouse from "@/assets/warehouse.jpg";
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/whatsapp";
-import {
-  APP_URL,
-  CATALOG_SIZE,
-  DESTINATIONS,
-  ORIGINS,
-  SAMPLE_PRICES,
-  formatUsd,
-  whatsappLink,
-} from "@/lib/site";
+import { DESTINATIONS, ORIGINS, whatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,12 +23,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "شحن بري سريع من أربيل وبغداد إلى القامشلي والحسكة والرقة وحلب ودمشق. أسعار واضحة بالدولار لأكثر من 68 صنف.",
+          "شحن بري سريع وموثوق من أربيل وبغداد إلى القامشلي والحسكة والرقة وحلب ودمشق. اطلب عرض سعرك عبر واتساب.",
       },
       { property: "og:title", content: "التواصل الذهبي للشحن السريع | من العراق إلى سوريا" },
       {
         property: "og:description",
-        content: "شحن بري سريع وموثوق مع دليل أسعار مباشر لكل صنف ولكل مسار.",
+        content: "شحن بري سريع وموثوق من العراق إلى سوريا. عرض السعر عبر واتساب مباشرة.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -53,14 +44,14 @@ const STEPS = [
     text: "اختر مدينة الانطلاق في العراق والوجهة في سوريا.",
   },
   {
-    icon: Search,
-    title: "ابحث عن الصنف",
-    text: "اكتب اسم البضاعة لتظهر لك تكلفة الشحن المسجّلة فوراً.",
+    icon: MessageSquareText,
+    title: "راسلنا على واتساب",
+    text: "أرسل نوع البضاعة ووزنها التقريبي في رسالة واحدة.",
   },
   {
-    icon: Calculator,
-    title: "احسب حسب الوزن",
-    text: "أدخل وزن شحنتك واحصل على التكلفة الإجمالية بالدولار.",
+    icon: PackageCheck,
+    title: "استلم عرض السعر",
+    text: "نرسل لك عرض سعر خاص بشحنتك ونبدأ التنفيذ.",
   },
 ];
 
@@ -82,53 +73,56 @@ function Index() {
           <div className="relative flex h-full min-h-[460px] flex-col justify-end p-7 md:p-10">
             <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-primary/40 bg-background/50 px-3 py-1 text-xs text-primary-glow backdrop-blur">
               <span className="size-2 animate-ember rounded-full bg-primary" />
-              شحن بري يومي · العراق ← سوريا
+              شحن بري · العراق ← سوريا
             </span>
             <h1 className="max-w-2xl text-4xl font-bold leading-[1.25] md:text-6xl md:leading-[1.2]">
-              بضاعتك تصل <span className="text-ember">أسرع</span>، وبسعر تعرفه مسبقاً.
+              بضاعتك تصل <span className="text-ember">أسرع</span>، وبأمان تام.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-8 text-muted-foreground md:text-lg">
-              نشحن من أربيل وبغداد إلى كل المدن السورية الرئيسية، مع دليل أسعار مباشر لكل صنف.
+              نشحن من أربيل وبغداد إلى المدن السورية الرئيسية. راسلنا على واتساب واحصل على عرض سعر
+              خاص بشحنتك.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="hero" size="xl">
-                <a href={APP_URL} target="_blank" rel="noreferrer">
-                  افتح دليل الأسعار
-                  <ArrowUpLeft />
-                </a>
-              </Button>
               <Button asChild variant="whatsapp" size="xl">
                 <a href={whatsappLink()} target="_blank" rel="noreferrer">
                   <WhatsAppIcon className="size-5" />
-                  اطلب شحنتك عبر واتساب
+                  اطلب عرض سعر عبر واتساب
                 </a>
+              </Button>
+              <Button asChild variant="glass" size="xl">
+                <Link to="/routes">
+                  تعرّف على المسارات
+                  <ArrowLeft />
+                </Link>
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Catalog stat */}
+        {/* Routes count */}
         <div className="bento-tile animate-rise p-6 [animation-delay:80ms]">
-          <PackageSearch className="size-7 text-primary" />
-          <div className="mt-6 font-display text-6xl font-bold text-ember">{CATALOG_SIZE}</div>
-          <p className="mt-2 text-sm text-muted-foreground">صنفاً مسعّراً في دليل المنتجات</p>
+          <RouteIcon className="size-7 text-primary" />
+          <div className="mt-6 font-display text-6xl font-bold text-ember">
+            {ORIGINS.length * DESTINATIONS.length}
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">مسارات شحن بين العراق وسوريا</p>
         </div>
 
-        {/* USD */}
+        {/* Quote via WhatsApp */}
         <div className="bento-tile animate-rise p-6 [animation-delay:140ms]">
-          <DollarSign className="size-7 text-primary" />
-          <h3 className="mt-6 text-xl font-semibold">أسعار بالدولار</h3>
+          <MessageSquareText className="size-7 text-primary" />
+          <h3 className="mt-6 text-xl font-semibold">عرض سعر خاص</h3>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            سعر ثابت وواضح لكل 1000 كغ، بدون مفاجآت.
+            كل شحنة لها عرض سعر يناسبها، يصلك مباشرة على واتساب.
           </p>
         </div>
 
-        {/* Calculator */}
+        {/* Safety */}
         <div className="bento-tile animate-rise p-6 [animation-delay:200ms]">
-          <Calculator className="size-7 text-primary" />
-          <h3 className="mt-6 text-xl font-semibold">حاسبة الوزن</h3>
+          <ShieldCheck className="size-7 text-primary" />
+          <h3 className="mt-6 text-xl font-semibold">شحن موثوق</h3>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            احسب تكلفة شحنتك حسب وزنها الفعلي خلال ثوانٍ.
+            نتابع شحنتك من التحميل حتى التسليم في الوجهة.
           </p>
         </div>
 
@@ -140,7 +134,7 @@ function Index() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <RouteIcon className="size-5 text-primary" />
-              {ORIGINS.length * DESTINATIONS.length} مسارات شحن
+              المسارات
             </div>
             <ArrowLeft className="size-5 text-muted-foreground transition-transform group-hover:-translate-x-1 group-hover:text-primary" />
           </div>
@@ -183,9 +177,9 @@ function Index() {
           />
           <div className="absolute inset-0 bg-shade" />
           <div className="relative flex h-full min-h-[300px] flex-col justify-end p-6">
-            <h3 className="text-xl font-semibold">كل أنواع البضائع</h3>
+            <h3 className="text-xl font-semibold">تغليف وتحميل بعناية</h3>
             <p className="mt-2 text-sm leading-7 text-muted-foreground">
-              ألبسة، أحذية، قطع سيارات، إلكترونيات ومستحضرات.
+              نتعامل مع بضاعتك كأنها بضاعتنا، من المستودع حتى الوصول.
             </p>
           </div>
         </div>
@@ -201,9 +195,9 @@ function Index() {
             <WhatsAppIcon className="size-8" />
           </div>
           <div>
-            <h3 className="mt-5 text-xl font-semibold">رد سريع على واتساب</h3>
+            <h3 className="mt-5 text-xl font-semibold">الأسعار عبر واتساب فقط</h3>
             <p className="mt-2 text-sm leading-7 text-muted-foreground">
-              اسألنا عن أي صنف أو احجز شحنتك مباشرة.
+              راسلنا بتفاصيل شحنتك ونرد عليك بعرض السعر.
             </p>
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-whatsapp">
               ابدأ المحادثة
@@ -211,44 +205,40 @@ function Index() {
             </span>
           </div>
         </a>
-        {/* Prices preview */}
+
+        {/* Booking tile */}
         <Link
-          to="/prices"
-          className="bento-tile group animate-rise p-6 md:col-span-2 [animation-delay:440ms]"
+          to="/contact"
+          className="bento-tile group animate-rise flex flex-col justify-between p-6 md:col-span-2 [animation-delay:440ms]"
         >
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold">نماذج من الأسعار</h3>
-            <span className="flex items-center gap-1 text-sm text-primary">
-              كل الأسعار
-              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-            </span>
+            <h3 className="text-lg font-semibold">احجز شحنتك في دقيقة</h3>
+            <ArrowLeft className="size-5 text-muted-foreground transition-transform group-hover:-translate-x-1 group-hover:text-primary" />
           </div>
-          <p className="mt-1 text-xs text-muted-foreground">أربيل ← قامشلي - حسكة · لكل 1000 كغ</p>
-          <ul className="mt-5 divide-y divide-border">
-            {SAMPLE_PRICES.slice(0, 3).map((p) => (
-              <li key={p.name} className="flex items-center justify-between py-3">
-                <span className="text-sm">{p.name}</span>
-                <span className="font-display text-lg font-bold" dir="ltr">
-                  {formatUsd(p.price)}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-3 max-w-md text-sm leading-7 text-muted-foreground">
+            املأ نموذجاً قصيراً بالمسار والوزن، وسنفتح لك محادثة واتساب جاهزة بالطلب.
+          </p>
+          <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-surface-raised px-4 py-2 text-sm">
+            <MessageSquareText className="size-4 text-primary" />
+            نموذج طلب الشحن
+          </span>
         </Link>
       </section>
 
       {/* How it works */}
       <section className="mt-24">
         <div className="max-w-xl">
-          <span className="text-sm font-medium text-primary">كيف يعمل دليل الأسعار</span>
-          <h2 className="mt-3 text-3xl font-bold md:text-4xl">ثلاث خطوات لتعرف تكلفة شحنتك</h2>
+          <span className="text-sm font-medium text-primary">كيف نعمل</span>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">ثلاث خطوات لشحن بضاعتك</h2>
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {STEPS.map((s, i) => (
             <div key={s.title} className="bento-tile p-7">
               <div className="flex items-center justify-between">
                 <s.icon className="size-7 text-primary" />
-                <span className="font-display text-5xl font-bold text-foreground/10">0{i + 1}</span>
+                <span className="font-display text-5xl font-bold text-foreground/10">
+                  0{i + 1}
+                </span>
               </div>
               <h3 className="mt-6 text-xl font-semibold">{s.title}</h3>
               <p className="mt-2 text-sm leading-7 text-muted-foreground">{s.text}</p>
@@ -265,23 +255,15 @@ function Index() {
           <div>
             <h2 className="text-3xl font-bold md:text-4xl">جاهز لشحن بضاعتك؟</h2>
             <p className="mt-3 max-w-lg text-muted-foreground">
-              تواصل معنا الآن على واتساب واحصل على عرض سعر لشحنتك خلال دقائق.
+              تواصل معنا الآن على واتساب واحصل على عرض سعر لشحنتك.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Button asChild variant="whatsapp" size="xl">
-              <a href={whatsappLink()} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" />
-                تواصل عبر واتساب
-              </a>
-            </Button>
-            <Button asChild variant="glass" size="xl">
-              <a href={APP_URL} target="_blank" rel="noreferrer">
-                دليل الأسعار
-                <ArrowUpLeft />
-              </a>
-            </Button>
-          </div>
+          <Button asChild variant="whatsapp" size="xl">
+            <a href={whatsappLink()} target="_blank" rel="noreferrer">
+              <WhatsAppIcon className="size-5" />
+              تواصل عبر واتساب
+            </a>
+          </Button>
         </div>
       </section>
     </div>
