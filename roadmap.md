@@ -6,3 +6,4 @@
 - [x] Real WhatsApp numbers for all offices (Iraq, Syria, China)
 - [x] Add Aleppo office WhatsApp number
 - [ ] Update site title and description (waiting on user's choice)
+- [x] Add Damascus office (uses Erbil head office number) and label Qamishli as Syria head office
