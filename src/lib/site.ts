@@ -33,11 +33,12 @@ export const CONTACTS: Country[] = [
 ];
 
 /** Main number (Erbil head office) used by every general WhatsApp button. */
-export const WHATSAPP_NUMBER = CONTACTS[0].offices[0].numbers[0];
+export const WHATSAPP_NUMBER: string = "9647506550001";
+const BAGHDAD_NUMBER: string = "9647702963703";
 
 /** WhatsApp number for the office in a shipment's origin city. */
 export const originNumber = (origin: string) =>
-  origin === "بغداد" ? CONTACTS[0].offices[1].numbers[0] : WHATSAPP_NUMBER;
+  origin === "بغداد" ? BAGHDAD_NUMBER : WHATSAPP_NUMBER;
 
 /** "9647506550001" → "+964 750 655 0001" */
 export const formatPhone = (digits: string) => {
