@@ -78,18 +78,26 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "التواصل الذهبي للشحن السريع" },
-      {
-        name: "description",
-        content: "شحن بري سريع وموثوق من أربيل وبغداد إلى سوريا. عرض السعر عبر واتساب.",
-      },
-      { name: "author", content: "شركة التواصل الذهبي للشحن السريع" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+   meta: [
+  {
+    charSet: 'utf-8',
+  },
+  {
+    name: 'viewport',
+    content: 'width=device-width, initial-scale=1',
+  },
+  {
+    title: 'التواصل الذهبي للشحن السريع | شحن بري من العراق إلى سوريا',
+  },
+  {
+    name: 'description',
+    content: 'شركة التواصل الذهبي للشحن السريع والموثوق من العراق (أربيل وبغداد) إلى سوريا (القامشلي، الحسكة، الرقة، حلب، ودمشق). تغليف آمن ومتابعة مستمرة، اطلب عرض سعر خاص لشحنتك الآن عبر واتساب.',
+  },
+  {
+    name: 'keywords',
+    content: 'شركة التواصل الذهبي، التواصل الذهبي للشحن السريع، شحن من العراق إلى سوريا، شحن من أربيل إلى القامشلي، شحن من بغداد إلى دمشق، شحن بضائع إلى حلب والحسكة والرقة',
+  },
+],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
