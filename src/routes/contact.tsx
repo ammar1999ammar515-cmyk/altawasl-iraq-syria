@@ -31,6 +31,7 @@ export const Route = createFileRoute("/contact")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+  staticData: { sitemap: true },
   component: ContactPage,
 });
 
