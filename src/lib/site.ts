@@ -23,6 +23,7 @@ export const CONTACTS: Country[] = [
     offices: [
       { city: "القامشلي", numbers: ["963932904444"] },
       { city: "الرقة", numbers: ["963981966403"] },
+      { city: "حلب", numbers: ["963981275000"] },
     ],
   },
   {
