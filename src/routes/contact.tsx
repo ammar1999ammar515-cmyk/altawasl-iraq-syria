@@ -29,6 +29,8 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://iraq-syria-shipping-rates.lovable.app/og/brand.jpg" },
+      { name: "twitter:image", content: "https://iraq-syria-shipping-rates.lovable.app/og/brand.jpg" },
     ],
   }),
   staticData: { sitemap: true },
