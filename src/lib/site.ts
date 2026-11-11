@@ -21,9 +21,10 @@ export const CONTACTS: Country[] = [
     country: "سوريا",
     flag: "🇸🇾",
     offices: [
-      { city: "القامشلي", numbers: ["963932904444"] },
+      { city: "الإدارة في سوريا - القامشلي", numbers: ["963932904444"] },
       { city: "الرقة", numbers: ["963981966403"] },
       { city: "حلب", numbers: ["963981275000"] },
+      { city: "دمشق", numbers: ["9647506550001"] },
     ],
   },
   {
